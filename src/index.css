@@ -1,0 +1,77 @@
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html, body {
+  overflow-x: hidden;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #6c63ff;
+  --primary-dark: #5a52d5;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --text: #1a1a2e;
+  --text-muted: #666;
+  --border: #e2e8f0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+button {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+input, select {
+  font-family: inherit;
+}
+
+/* Responsive helpers */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+}
+
+@media (min-width: 769px) {
+  .hide-desktop { display: none !important; }
+}
+
+
+
+@media (max-width: 640px) {
+  /* Desktop table hide, mobile cards show */
+  div[style*="desktopTable"] { display: none !important; }
+  div[style*="mobileCards"] { display: block !important; }
+
+  /* Form grid single column */
+  div[style*="formGrid"] { grid-template-columns: 1fr !important; }
+  div[style*="span 2"] { grid-column: span 1 !important; }
+}
