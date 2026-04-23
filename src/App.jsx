@@ -4,6 +4,8 @@ import { supabase } from './supabase/client'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
+import ForgotPassword from './pages/ForgotPassword'
+import UpdatePassword from './pages/UpdatePassword'
 
 function App() {
   const [session, setSession] = useState(null)
@@ -23,7 +25,7 @@ function App() {
   }, [])
 
   if (loading) return (
-    <div style={{ display:'flex', justifyContent:'center', alignItems:'center', height:'100vh' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       Loading...
     </div>
   )
@@ -33,6 +35,17 @@ function App() {
       <Routes>
         <Route path="/login" element={!session ? <Login /> : <Navigate to="/" />} />
         <Route path="/signup" element={!session ? <Signup /> : <Navigate to="/" />} />
+
+        <Route
+          path="/forgot-password"
+          element={!session ? <ForgotPassword /> : <Navigate to="/" />}
+        />
+
+        <Route
+          path="/update-password"
+          element={<UpdatePassword />}
+        />
+
         <Route path="/" element={session ? <Dashboard /> : <Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>

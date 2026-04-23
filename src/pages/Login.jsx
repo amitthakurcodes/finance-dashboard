@@ -43,13 +43,24 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+
+          <p style={styles.forgotWrap}>
+            <Link to="/forgot-password" style={styles.forgotLink}>
+              Forgot password?
+            </Link>
+          </p>
+
+
           <button style={styles.button} type="submit" disabled={loading}>
             {loading ? 'Logging in...' : 'Login'}
           </button>
         </form>
 
         <p style={styles.link}>
-          Account nahi hai? <Link to="/signup">Signup karo</Link>
+          Don't have an account?{" "}
+          <Link to="/signup" style={styles.signupLink}>
+            Sign up
+          </Link>
         </p>
       </div>
     </div>
@@ -95,5 +106,21 @@ const styles = {
     cursor: 'pointer'
   },
   error: { color: 'red', marginBottom: '1rem', fontSize: '0.9rem' },
-  link: { textAlign: 'center', marginTop: '1rem', fontSize: '0.9rem' }
+  link: { textAlign: 'center', marginTop: '1rem', fontSize: '0.9rem', color: '#555' },
+  signupLink: {
+    color: '#6c63ff',
+    fontWeight: '600',
+    textDecoration: 'none'
+  },
+
+  forgotWrap: {
+  textAlign: 'right',
+  marginBottom: '1rem'
+},
+
+forgotLink: {
+  color: '#6c63ff',
+  textDecoration: 'none',
+  fontSize: '0.9rem'
+}
 }

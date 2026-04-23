@@ -16,7 +16,7 @@ export default function Signup() {
 
     const { error } = await supabase.auth.signUp({ email, password })
     if (error) setError(error.message)
-    else setMessage('Check karo apna email — confirmation link aaya hoga!')
+    else setMessage('Check your email for the confirmation link.')
     setLoading(false)
   }
 
@@ -47,12 +47,15 @@ export default function Signup() {
             required
           />
           <button style={styles.button} type="submit" disabled={loading}>
-            {loading ? 'Creating account...' : 'Signup'}
+            {loading ? 'Creating account...' : 'Sign up'}
           </button>
         </form>
 
         <p style={styles.link}>
-          Pehle se account hai? <Link to="/login">Login karo</Link>
+          Already have an account?{" "}
+          <Link to="/login" style={styles.signupLink}>
+            Log in
+          </Link>
         </p>
       </div>
     </div>
@@ -99,5 +102,10 @@ const styles = {
   },
   error: { color: 'red', marginBottom: '1rem', fontSize: '0.9rem' },
   success: { color: 'green', marginBottom: '1rem', fontSize: '0.9rem' },
-  link: { textAlign: 'center', marginTop: '1rem', fontSize: '0.9rem' }
+  link: { textAlign: 'center', marginTop: '1rem', fontSize: '0.9rem' },
+  signupLink: {
+  color: '#6c63ff',
+  fontWeight: '600',
+  textDecoration: 'none'
+}
 }
